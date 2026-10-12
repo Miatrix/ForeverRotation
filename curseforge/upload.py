@@ -10,6 +10,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 CHANGELOG = Path(__file__).with_name("CHANGELOG.md")
 GAME_VERSION_IDS = [17053]
+OUT_DIR = Path(os.environ.get("WFR_RELEASE_DIR", ROOT / "curseforge" / "dist"))
 
 
 def version():
@@ -22,7 +23,7 @@ def version():
 
 def main():
     ver = version()
-    zip_path = Path(r"F:\Github\addons\wow") / f"WoWForeverRot-{ver}.zip"
+    zip_path = OUT_DIR / f"WoWForeverRot-{ver}.zip"
     token = os.environ.get("CF_TOKEN")
     project = os.environ.get("CF_PROJECT_ID")
     if not token or not project:

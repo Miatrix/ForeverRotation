@@ -6,3 +6,6 @@ desktop.ini
 .vscode/
 .idea/
 *.log
+__pycache__/
+/deploy-addon.bat
+/curseforge/dist/

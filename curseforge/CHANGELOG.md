@@ -1,3 +1,20 @@
+# 1.5.73
+
+## Reliable Cat Form rotation and cleaner Feral priorities
+
+Cat druids could occasionally receive caster suggestions because Forever hid or remapped the Cat Form aura even while the stance was active. Form selection now reads the active shapeshift stance first and keeps the aura check as a compatibility fallback, so Cat Form consistently uses the cat rotation. Bear and Dire Bear Form are recognized explicitly as well.
+
+### Rotation details
+- **Feral Charge (Cat)** is no longer part of the normal single-target cat priority. It remains available for players who deliberately add it as a custom step, but the default HUD no longer presents a distance-only gap closer as an ordinary combat action.
+- Previously saved default cat lists also retire the old Feral Charge row instead of restoring it as a custom entry.
+- The druid combo-point window and energy timing bar now follow actual Cat Form rather than the broader Hybrid role.
+
+### Scope and compatibility
+- This change affects druids only. Other class rotations, list order, holds, profiles, healing, and defensive suggestions are unchanged.
+- Form detection remains Forever-safe and does not use the combat log.
+
+---
+
 # 1.5.72
 
 ## Open source — development by Vohnka has stopped

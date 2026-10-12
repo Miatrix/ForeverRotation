@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 """Build the CurseForge zip: one root folder named WoWForeverRot, no .git."""
+import os
 import zipfile
 from pathlib import Path
 
@@ -14,10 +15,11 @@ def version():
     raise SystemExit("VERSION.txt missing version")
 
 
-OUT = Path(r"F:\Github\addons\wow") / f"WoWForeverRot-{version()}.zip"
+OUT_DIR = Path(os.environ.get("WFR_RELEASE_DIR", ROOT / "curseforge" / "dist"))
+OUT = OUT_DIR / f"WoWForeverRot-{version()}.zip"
 
 SKIP_DIRS = {".git", ".cursor", "curseforge", "__pycache__", ".idea", ".vscode"}
-SKIP_FILES = {"AGENTS.md", "LISEZMOI.txt"}
+SKIP_FILES = {"AGENTS.md", "LISEZMOI.txt", "deploy-addon.bat"}
 SKIP_SUFFIX = {".pyc", ".bak", ".tmp", ".log"}
 
 

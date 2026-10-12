@@ -216,7 +216,7 @@ function ns.ActiveSpec()
 	local role = ns.db.role or "damage"
 	if token == "DRUID" then
 		local cat = ns.API.Form(S.Druid.CatForm)
-		local bear = ns.API.Form(S.Druid.BearForm)
+		local bear = ns.API.Form(S.Druid.BearForm) or ns.API.Form(S.Druid.DireBear)
 		if role == "heal" then
 			return "heal"
 		end
@@ -480,7 +480,9 @@ local function mergeSteps(defaults, saved, dropped, skipMaint)
 					racial = def.racial,
 				}
 				seen[row.key] = true
-			elseif (row.id or row.custom) and not skipCombatOnly(row.id, skipMaint) then
+			-- Retired built-in steps stay removed from previously saved default
+			-- lists. Players can still add the spell explicitly as a custom row.
+			elseif row.key ~= "FeralChargeCat" and (row.id or row.custom) and not skipCombatOnly(row.id, skipMaint) then
 				local opt = applySavedHold(copyOpt(row.opt), row, row.id)
 				if ns.API.IsHelpful and ns.API.IsHelpful(row.id, opt) and not opt.heal then
 					opt.heal = true

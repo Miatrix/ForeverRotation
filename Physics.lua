@@ -540,7 +540,8 @@ function ns.Physics.Status()
 	addBar(bars, "swing", mhLeft, mhSp, SWING_WINDOW, ns.T("PHYS_SWING"))
 	local ohLeft, ohSp = handRemain(ohAt, ohSpeed)
 	addBar(bars, "offhand", ohLeft, ohSp, SWING_WINDOW, ns.T("PHYS_OFFHAND"))
-	if token == "ROGUE" or (token == "DRUID" and role ~= "tank" and role ~= "heal") then
+	local cat = token == "DRUID" and ns.Spell and ns.Spell.Druid and ns.API.Form(ns.Spell.Druid.CatForm)
+	if token == "ROGUE" or cat then
 		sampleEnergy()
 		local tick = energyTickRemain() or ENERGY_TICK
 		bars[#bars + 1] = {

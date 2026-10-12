@@ -695,7 +695,7 @@ function ns.UI.Create()
 		self._acc = 0
 		local idle = ns.API.ShouldHideIdle and ns.API.ShouldHideIdle()
 		local token = ns.ClassToken and ns.ClassToken()
-		local cat = token == "DRUID" and ns.db and ns.db.role == "cat"
+		local cat = token == "DRUID" and ns.Spell and ns.Spell.Druid and ns.API.Form(ns.Spell.Druid.CatForm)
 		local show = not idle and ns.db and ns.db.showRotation ~= false and (token == "ROGUE" or cat)
 		self:SetShown(show)
 		if not show then

@@ -3085,6 +3085,23 @@ function ns.API.WeaponTooltipHas(tokens)
 end
 
 function ns.API.Form(spellID)
+	-- Shapeshift auras can be hidden or report a different spell ID on
+	-- Forever. The stance API is authoritative when it exposes an active form.
+	if GetNumShapeshiftForms and GetShapeshiftFormInfo then
+		local okCount, count = pcall(GetNumShapeshiftForms)
+		if okCount and type(count) == "number" then
+			local resolved = ns.API.Resolve(spellID) or spellID
+			for index = 1, count do
+				local okForm, _, active, _, formID = pcall(GetShapeshiftFormInfo, index)
+				if okForm and active then
+					local resolvedForm = ns.API.Resolve(formID) or formID
+					if formID == spellID or formID == resolved or resolvedForm == spellID or resolvedForm == resolved then
+						return true
+					end
+				end
+			end
+		end
+	end
 	return ns.API.HasAura(spellID, "player", "HELPFUL")
 end
 

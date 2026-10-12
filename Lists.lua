@@ -66,7 +66,6 @@ ns.APLDefaults = {
 		cat = {
 			step("Prowl", D.Prowl, { nobuff = true, nocombat = true }),
 			step("Ravage", D.Ravage, { needbuff = D.Prowl, hostile = true }),
-			step("FeralChargeCat", D.FeralChargeCat, { hostile = true }),
 			step("TigersFury", D.TigersFury, { nobuff = true }),
 			step("FaerieFireFeral", D.FaerieFireFeral, { nodebuff = true, hostile = true }),
 			step("MangleCat", D.MangleCat, { hostile = true }),

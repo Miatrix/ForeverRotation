@@ -1,16 +1,16 @@
-1.5.72
+1.5.73
 
-# 1.5.72
+# 1.5.73
 
-## Open source — development by Vohnka has stopped
+## Reliable Cat Form rotation and cleaner Feral priorities
 
-Active development of Forever Rotation by the original author has ended. The GitHub repository is now **public** under the **MIT** license so anyone can fork it, fix bugs, and keep improving the addon for Forever.
+Cat druids could occasionally receive caster suggestions because Forever hid or remapped the Cat Form aura even while the stance was active. Form selection now reads the active shapeshift stance first and keeps the aura check as a compatibility fallback, so Cat Form consistently uses the cat rotation. Bear and Dire Bear Form are recognized explicitly as well.
 
-### What changed for players
-- Info → Links now includes **GitHub** next to Website, Discord, and CurseForge.
-- About / support text states that maintenance by Vohnka has stopped and that forks are welcome.
-- CurseForge description and project source point to https://github.com/ssablon/ForeverRotation.
+### Rotation details
+- **Feral Charge (Cat)** is no longer part of the normal single-target cat priority. It remains available for players who deliberately add it as a custom step, but the default HUD no longer presents a distance-only gap closer as an ordinary combat action.
+- Previously saved default cat lists also retire the old Feral Charge row instead of restoring it as a custom entry.
+- The druid combo-point window and energy timing bar now follow actual Cat Form rather than the broader Hybrid role.
 
-### What did not change
-- Rotation logic, holds, profiles, and HUD behaviour from **1.5.71** are unchanged in this build aside from the Info texts and links.
-- The addon still never casts for you and still never reads the combat log.
+### Scope and compatibility
+- This change affects druids only. Other class rotations, list order, holds, profiles, healing, and defensive suggestions are unchanged.
+- Form detection remains Forever-safe and does not use the combat log.
